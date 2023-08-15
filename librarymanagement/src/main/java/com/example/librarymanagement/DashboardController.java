@@ -556,6 +556,23 @@ public class DashboardController implements Initializable {
 
         return listSaveData;
     }
+
+    private ObservableList<saveBook> sBookList;
+
+    public void showSavedBooks() {
+
+        sBookList = savedBooksData();
+
+        col_saveTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        col_saveAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        col_saveGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        col_saveDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        save_tableView.setItems(sBookList);
+
+    }
+
+
     public void saveBooks() {
 
         String sql = "INSERT INTO save VALUES (?,?,?,?,?,?)";
@@ -751,10 +768,6 @@ public class DashboardController implements Initializable {
 
         }
     }
-
-    private void showSavedBooks() {
-    }
-
     private double x = 0;
     private double y = 0;
 
@@ -811,6 +824,8 @@ public class DashboardController implements Initializable {
         gender();
         displayDate();
         showBookReturn();
+        showSavedBooks();
+
 
         try {
             showBookReturn();
