@@ -84,7 +84,7 @@
          <center>
             <AnchorPane prefHeight="524.0" prefWidth="787.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane fx:id="availableBooks_form" prefHeight="599.0" prefWidth="805.0">
                            <children>
@@ -195,7 +195,7 @@
                            </children></AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="returnBook_form" layoutX="168.0" layoutY="95.0" prefHeight="599.0" prefWidth="805.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="returnBook_form" layoutX="168.0" layoutY="95.0" prefHeight="599.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="313.0" layoutY="10.0" prefHeight="576.0" prefWidth="472.0" styleClass="card-form" stylesheets="@../../../../CSS/DashboardDesain.css">
                            <children>
@@ -205,7 +205,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="return_tableView" layoutX="10.0" layoutY="43.0" prefHeight="525.0" prefWidth="455.0">
+                              <TableView fx:id="return_tableView" layoutX="10.0" layoutY="43.0" onMouseClicked="#selectReturnBook" prefHeight="525.0" prefWidth="455.0">
                                 <columns>
                                   <TableColumn fx:id="col_return_BookTitle" prefWidth="112.05462646484375" text="Book Title" />
                                   <TableColumn fx:id="col_return_Author" prefWidth="113.8946533203125" text="Author" />

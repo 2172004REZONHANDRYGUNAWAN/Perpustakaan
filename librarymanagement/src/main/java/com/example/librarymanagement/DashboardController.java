@@ -440,6 +440,22 @@ public class DashboardController implements Initializable {
         return_tableView.setItems(retBook);
 
     }
+    public void selectReturnBook() {
+
+        returnBook rBook = return_tableView.getSelectionModel().getSelectedItem();
+        int num = return_tableView.getSelectionModel().getFocusedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        String uri = "file:" + rBook.getImage();
+
+        image = new Image(uri, 163, 211, false, true);
+        return_imageView.setImage(image);
+
+        getData.takeBookTitle = rBook.getTitle();
+    }
     public ObservableList<availableBooks> dataList() {
 
         ObservableList<availableBooks> listBooks = FXCollections.observableArrayList();
@@ -639,8 +655,13 @@ public class DashboardController implements Initializable {
         gender();
         displayDate();
         showBookReturn();
+
+        try {
+            showBookReturn();
+        } catch (Exception e) {e.printStackTrace();}
     }
 
     private static class FontAwesomeIcon {
     }
+
 }
