@@ -427,6 +427,44 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void returnBooks() {
+
+        String sql = "UPDATE take SET checkReturn = 'Returned' WHERE bookTitle = '" + getData.takeBookTitle + "'";
+
+        connect = Database.connectDB();
+
+        Alert alert;
+
+        try {
+
+            if (return_imageView.getImage() == null) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the book you want to return");
+                alert.showAndWait();
+
+            } else {
+
+                statement = connect.createStatement();
+                statement.executeUpdate(sql);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully returned!");
+                alert.showAndWait();
+
+                showBookReturn();
+
+                return_imageView.setImage(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     private ObservableList<returnBook> retBook;
     public void showBookReturn() {
 
@@ -488,6 +526,117 @@ public class DashboardController implements Initializable {
         return listBooks;
     }
 
+    public ObservableList<saveBook> savedBooksData() {
+
+        ObservableList<saveBook> listSaveData = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM save WHERE studentNumber = '"+ getData.studentNumber +"'";
+
+        connect = Database.connectDB();
+
+        try {
+
+            saveBook sBook;
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+
+                sBook = new saveBook(result.getString("bookTitle"), result.getString("author"),
+                        result.getString("bookType"), result.getString("image"), result.getDate("date"));
+
+                listSaveData.add(sBook);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listSaveData;
+    }
+    public void saveBooks() {
+
+        String sql = "INSERT INTO save VALUES (?,?,?,?,?,?)";
+
+        connect = Database.connectDB();
+
+        try {
+
+            Alert alert;
+
+            if (availableBooks_title.getText().isEmpty()) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the book");
+                alert.showAndWait();
+            } else {
+                prepare = connect.prepareStatement(sql);
+                prepare.setString(1, getData.studentNumber);
+                prepare.setString(2, getData.savedTitle);
+                prepare.setString(3, getData.savedAuthor);
+                prepare.setString(4, getData.savedGenre);
+                prepare.setString(5, getData.savedImage);
+                prepare.setDate(6, getData.savedDate);
+                prepare.executeUpdate();
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully Saved.");
+                alert.showAndWait();
+
+                showSavedBooks();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void unsaveBooks() {
+
+        String sql = "DELETE FROM save WHERE bookTitle = '" + getData.savedTitle + "'"
+                + " and studentNumber = '" + getData.studentNumber + "'";
+
+        connect = Database.connectDB();
+
+        try {
+
+            Alert alert;
+
+            if (save_imageView.getImage() == null) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please Select the book you want to unsave");
+                alert.showAndWait();
+
+            } else {
+
+                statement = connect.createStatement();
+                statement.executeUpdate(sql);
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Admin Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully unsaved.");
+                alert.showAndWait();
+
+                showSavedBooks();
+
+                save_imageView.setImage(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private ObservableList<availableBooks> listBook;
 
     public void showAvailableBooks() {
@@ -518,6 +667,13 @@ public class DashboardController implements Initializable {
         image = new Image(uri, 134, 171, false, true);
 
         availableBooks_imageView.setImage(image);
+
+        getData.takeBookTitle = bookData.getTitle();
+        getData.savedTitle = bookData.getTitle();
+        getData.savedAuthor = bookData.getAuthor();
+        getData.savedGenre = bookData.getGenre();
+        getData.savedImage = bookData.getImage();
+        getData.savedDate = bookData.getDate();
     }
     public void abTakeButton(ActionEvent event) {
 
