@@ -572,7 +572,24 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void selectSavedBooks() {
 
+        saveBook sBook = save_tableView.getSelectionModel().getSelectedItem();
+        int num = save_tableView.getSelectionModel().getFocusedIndex();
+
+        if ((num - 1) < -1) {
+            return;
+        }
+
+        String uri = "file:" + sBook.getImage();
+
+        image = new Image(uri, 167, 195, false, true);
+        save_imageView.setImage(image);
+
+        getData.savedImage = sBook.getImage();
+        getData.savedTitle = sBook.getTitle();
+
+    }
     public void saveBooks() {
 
         String sql = "INSERT INTO save VALUES (?,?,?,?,?,?)";
@@ -775,7 +792,6 @@ public class DashboardController implements Initializable {
     public void logout(ActionEvent event) {
         try {
             if (event.getSource() == logout_btn) {
-                // TO SWAP FROM DASHBOARD TO LOGIN FORM
                 Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
                 Stage stage = new Stage();

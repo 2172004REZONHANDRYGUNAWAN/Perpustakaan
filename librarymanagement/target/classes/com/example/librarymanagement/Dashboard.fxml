@@ -226,11 +226,11 @@
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
-                  <AnchorPane fx:id="savedBook_form" layoutX="95.0" layoutY="45.0" prefHeight="599.0" prefWidth="805.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="savedBook_form" layoutX="95.0" layoutY="45.0" prefHeight="599.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="275.0" prefWidth="781.0" styleClass="card-form" stylesheets="@../../../../CSS/DashboardDesain.css">
                            <children>
-                              <TableView fx:id="save_tableView" layoutX="236.0" layoutY="8.0" prefHeight="259.0" prefWidth="538.0">
+                              <TableView fx:id="save_tableView" layoutX="236.0" layoutY="8.0" onMouseClicked="#selectSavedBooks" prefHeight="259.0" prefWidth="538.0">
                                 <columns>
                                   <TableColumn fx:id="col_saveTitle" prefWidth="127.0" text="Book Title" />
                                   <TableColumn fx:id="col_saveAuthor" prefWidth="130.0" text="Author" />
@@ -238,12 +238,12 @@
                                     <TableColumn fx:id="col_saveDate" prefWidth="140.0" text="Published Date" />
                                 </columns>
                               </TableView>
-                              <AnchorPane layoutX="33.0" layoutY="11.0" prefHeight="195.0" prefWidth="167.0" styleClass="image-card" stylesheets="@../../../../CSS/DashboardDesain.css">
+                              <AnchorPane layoutX="41.0" layoutY="14.0" prefHeight="195.0" prefWidth="167.0" styleClass="image-card" stylesheets="@../../../../CSS/DashboardDesain.css">
                                  <children>
-                                    <ImageView fx:id="save_imageView" fitHeight="195.0" fitWidth="167.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="save_imageView" fitHeight="195.0" fitWidth="167.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" />
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="unsaveBtn" layoutX="75.0" layoutY="223.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" styleClass="unsave-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Unsave" />
+                              <Button fx:id="unsaveBtn" layoutX="75.0" layoutY="223.0" mnemonicParsing="false" onAction="#unsaveBooks" prefHeight="38.0" prefWidth="87.0" styleClass="unsave-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Unsave" />
                            </children>
                         </AnchorPane>
                         <Separator layoutX="8.0" layoutY="290.0" prefHeight="20.0" prefWidth="785.0" />
