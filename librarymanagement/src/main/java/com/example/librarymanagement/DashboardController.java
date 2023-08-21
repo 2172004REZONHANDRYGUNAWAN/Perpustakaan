@@ -14,10 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -720,6 +723,26 @@ public class DashboardController implements Initializable {
     }
     public void studentNumber() {
         studentNumber_label.setText(getData.studentNumber);
+    }
+
+    public void insertImage() {
+
+        FileChooser open = new FileChooser();
+        open.setTitle("Image File");
+        //open.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image file","*png", "*jpg"));
+        Stage stage = (Stage) nav_form.getScene().getWindow();
+
+        File file = open.showOpenDialog(stage);
+
+
+        if (file != null) {
+
+            image = new Image(file.toURI().toString(), 100, 88, false, true);
+            circle_image.setFill(new ImagePattern(image));
+
+            getData.path = file.getAbsolutePath();
+
+        }
     }
     public void navButtonDesign(ActionEvent event) {
 

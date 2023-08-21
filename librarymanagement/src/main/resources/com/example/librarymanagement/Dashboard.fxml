@@ -51,7 +51,7 @@
                </children></AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../../../../CSS/DashboardDesain.css" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="nav_form" prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@../../../../CSS/DashboardDesain.css" BorderPane.alignment="CENTER">
                <children>
                   <Circle fx:id="circle_image" fill="#6f6f6f" layoutX="100.0" layoutY="88.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label layoutX="64.0" layoutY="165.0" text="Welcome" textFill="WHITE">
@@ -69,15 +69,13 @@
                   <Button fx:id="savedBooks_btn" layoutX="25.0" layoutY="369.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="40.0" prefWidth="152.0" styleClass="nav-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Saved Books" />
                   <Button fx:id="returnBooks_btn" layoutX="23.0" layoutY="320.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="40.0" prefWidth="154.0" styleClass="nav-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Return Books" />
                   <Button fx:id="issueBooks_btn" layoutX="23.0" layoutY="272.0" mnemonicParsing="false" onAction="#navButtonDesign" prefHeight="38.0" prefWidth="154.0" styleClass="nav-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Issue Books" />
-                  <Button fx:id="edit_btn" layoutX="50.0" layoutY="49.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="93.0" textFill="#868585">
-                     <graphic>
-                        <ImageView fitHeight="63.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@GAMBAR/editprofile.png" />
-                           </image></ImageView>
-                     </graphic>
-                  </Button>
+                  <Button fx:id="edit_btn" layoutX="31.0" layoutY="21.0" mnemonicParsing="false" onAction="#insertImage" prefHeight="135.0" prefWidth="143.0" style="-fx-background-color: transparent;" textFill="#868585" />
                   <Button fx:id="logout_btn" layoutX="69.0" layoutY="468.0" mnemonicParsing="false" onAction="#logout" styleClass="logout-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Sign Out" textFill="WHITE" />
+                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="84.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@GAMBAR/editprofile.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </left>
@@ -226,7 +224,7 @@
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
-                  <AnchorPane fx:id="savedBook_form" layoutX="95.0" layoutY="45.0" prefHeight="599.0" prefWidth="805.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="savedBook_form" layoutX="95.0" layoutY="45.0" prefHeight="599.0" prefWidth="805.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="275.0" prefWidth="781.0" styleClass="card-form" stylesheets="@../../../../CSS/DashboardDesain.css">
                            <children>
@@ -240,7 +238,7 @@
                               </TableView>
                               <AnchorPane layoutX="41.0" layoutY="14.0" prefHeight="195.0" prefWidth="167.0" styleClass="image-card" stylesheets="@../../../../CSS/DashboardDesain.css">
                                  <children>
-                                    <ImageView fx:id="save_imageView" fitHeight="195.0" fitWidth="167.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                                    <ImageView fx:id="save_imageView" fitHeight="195.0" fitWidth="167.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="false" visible="true" />
                                  </children>
                               </AnchorPane>
                               <Button fx:id="unsaveBtn" layoutX="75.0" layoutY="223.0" mnemonicParsing="false" onAction="#unsaveBooks" prefHeight="38.0" prefWidth="87.0" styleClass="unsave-btn" stylesheets="@../../../../CSS/DashboardDesain.css" text="Unsave" />
